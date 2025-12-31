@@ -110,6 +110,12 @@ const char * const riscv_vma[2] =
   "mu", "ma"
 };
 
+/* The IME immediate lambda constants for tile load/store */
+const char * const riscv_vlambda[8] =
+{
+  "dyn", "L1", "L2", "L4", "L8", "L16", "L32", "L64"
+};
+
 /* XTheadVector, List of vsetvli vlmul constants.  */
 const char * const riscv_th_vlen[4] =
 {
@@ -181,6 +187,7 @@ riscv_get_sp_base (insn_t opcode, unsigned int xlen)
 #define MASK_VS1 (OP_MASK_VS1 << OP_SH_VS1)
 #define MASK_VS2 (OP_MASK_VS2 << OP_SH_VS2)
 #define MASK_VMASK (OP_MASK_VMASK << OP_SH_VMASK)
+#define MASK_VLAMBDA (OP_MASK_VLAMBDA << OP_SH_VLAMBDA)
 /* Vendor-specific (CORE-V) masks.  */
 #define MASK_CV_IS3_UIMM5 ENCODE_CV_IS3_UIMM5 (-1U)
 
@@ -2221,6 +2228,18 @@ const struct riscv_opcode riscv_opcodes[] =
 /* Zvfbfwma instructions.  */
 {"vfwmaccbf16.vf",  0, INSN_CLASS_ZVFBFWMA, "Vd,S,VtVm",  MATCH_VFWMACCBF16_VF, MASK_VFWMACCBF16_VF, match_opcode, 0},
 {"vfwmaccbf16.vv",  0, INSN_CLASS_ZVFBFWMA, "Vd,Vs,VtVm", MATCH_VFWMACCBF16_VV, MASK_VFWMACCBF16_VV, match_opcode, 0},
+
+/* Zvmma (IME) instructions.  */
+{"vfmmacc.vv",   0, INSN_CLASS_ZVMMA, "Vd,Vt,VsVm", MATCH_VFMMACC_VV, MASK_VFMMACC_VV, match_opcode, 0},
+{"vfwmmacc.vv",  0, INSN_CLASS_ZVMMA, "Vd,Vt,VsVm", MATCH_VFWMMACC_VV, MASK_VFWMMACC_VV, match_opcode, 0},
+{"vfqwmmacc.vv", 0, INSN_CLASS_ZVMMA, "Vd,Vt,VsVm", MATCH_VFQWMMACC_VV, MASK_VFQWMMACC_VV, match_opcode, 0},
+{"vmmacc.vv",    0, INSN_CLASS_ZVMMA, "Vd,Vt,VsVm", MATCH_VMMACC_VV, MASK_VMMACC_VV, match_opcode, 0},
+{"vwmmacc.vv",   0, INSN_CLASS_ZVMMA, "Vd,Vt,VsVm", MATCH_VWMMACC_VV, MASK_VWMMACC_VV, match_opcode, 0},
+{"vqwmmacc.vv",  0, INSN_CLASS_ZVMMA, "Vd,Vt,VsVm", MATCH_VQWMMACC_VV, MASK_VQWMMACC_VV, match_opcode, 0},
+{"vmtl.v",       0, INSN_CLASS_ZVMMA, "Vd,0(s),tVLVm", MATCH_VMTL_V, MASK_VMTL_V, match_opcode, INSN_DREF},
+{"vmttl.v",      0, INSN_CLASS_ZVMMA, "Vd,0(s),tVLVm", MATCH_VMTTL_V, MASK_VMTTL_V, match_opcode, INSN_DREF},
+{"vmts.v",       0, INSN_CLASS_ZVMMA, "Vd,0(s),tVLVm", MATCH_VMTS_V, MASK_VMTS_V, match_opcode, INSN_DREF},
+{"vmtts.v",      0, INSN_CLASS_ZVMMA, "Vd,0(s),tVLVm", MATCH_VMTTS_V, MASK_VMTTS_V, match_opcode, INSN_DREF},
 
 /* Zvbb/Zvkb instructions.  */
 {"vandn.vv",   0, INSN_CLASS_ZVKB, "Vd,Vt,VsVm", MATCH_VANDN_VV, MASK_VANDN_VV, match_opcode, 0},

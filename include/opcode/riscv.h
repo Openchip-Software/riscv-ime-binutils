@@ -374,6 +374,9 @@ static inline unsigned int riscv_insn_length (insn_t insn)
 #define OP_MASK_VWD		0x1
 #define OP_SH_VWD		26
 
+#define OP_MASK_VLAMBDA         0x7ul
+#define OP_SH_VLAMBDA           29
+
 #define OP_MASK_XTHEADVLMUL	0x3
 #define OP_SH_XTHEADVLMUL	0
 #define OP_MASK_XTHEADVSEW	0x7
@@ -552,6 +555,7 @@ enum riscv_insn_class
   INSN_CLASS_ZVKNHA_OR_ZVKNHB,
   INSN_CLASS_ZVKSED,
   INSN_CLASS_ZVKSH,
+  INSN_CLASS_ZVMMA,
   INSN_CLASS_ZICFISS,
   INSN_CLASS_ZICFISS_AND_ZCMOP,
   INSN_CLASS_ZICFILP,
@@ -722,6 +726,7 @@ extern const char * const riscv_vsew[8];
 extern const char * const riscv_vlmul[8];
 extern const char * const riscv_vta[2];
 extern const char * const riscv_vma[2];
+extern const char * const riscv_vlambda[8];
 extern const char * const riscv_th_vlen[4];
 extern const char * const riscv_th_vediv[4];
 extern const char * const riscv_fli_symval[32];
