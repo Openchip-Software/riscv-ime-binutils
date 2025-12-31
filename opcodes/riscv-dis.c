@@ -494,6 +494,16 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 			 riscv_vecm_names_numeric[0]);
 		}
 	      break;
+	    case 'L':
+	      {
+		unsigned int vlambda = EXTRACT_OPERAND (VLAMBDA, l);
+		if (vlambda)
+		  {
+		    print (info->stream, dis_style_text, ",");
+		    print (info->stream, dis_style_register, "%s",
+			   riscv_vlambda[vlambda]);
+		  }
+	      }
 	    }
 	  break;
 

@@ -1563,6 +1563,7 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
 	    case 'l': used_bits |= ENCODE_RVV_VI_UIMM6 (-1U); break;
 	    case 'm': USE_BITS (OP_MASK_VMASK, OP_SH_VMASK); break;
 	    case 'M': break; /* Macro operand, must be a mask register.  */
+	    case 'L': USE_BITS (OP_MASK_VLAMBDA, OP_SH_VLAMBDA); break;
 	    case 'T': break; /* Macro operand, must be a vector register.  */
 	    default:
 	      goto unknown_validate_operand;
@@ -2686,6 +2687,27 @@ my_getVsetvliExpression (expressionS *ep, char *str)
     }
 }
 
+/* Parse string STR as a vsetvli operand.  Store the expression in *EP.
+   On exit, EXPR_PARSE_END points to the first character after the
+   expression.  */
+
+static void
+my_getVLambaExpression (expressionS *ep, char *str)
+{
+  unsigned int vlambda_value = 0;
+
+  expr_parse_end = str;
+
+  if (str && *str == ',')
+    ++str;
+
+  if (arg_lookup (&str, riscv_vlambda, ARRAY_SIZE (riscv_vlambda), &vlambda_value))
+    expr_parse_end = str;
+
+  ep->X_op = O_constant;
+  ep->X_add_number = vlambda_value;
+}
+
 /* Parse string STR as a th.vsetvli operand.  Store the expression in *EP.
    On exit, EXPR_PARSE_END points to the first character after the
    expression.  */
@@ -3422,6 +3444,17 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 		      continue;
 		    }
 		  break;
+
+		case 'L': /* optional lambda */
+		  my_getVLambaExpression (imm_expr, asarg);
+		  if (imm_expr->X_add_number < 0
+		      || imm_expr->X_add_number > 7)
+		    as_bad (_("bad value for lambda immediate field, "
+			      "value must be 0...7"));
+		  INSERT_OPERAND (VLAMBDA, *ip, imm_expr->X_add_number);
+		  imm_expr->X_op = O_absent;
+		  asarg = expr_parse_end;
+		  continue;
 
 		case 'M': /* required vector mask */
 		  if (reg_lookup (&asarg, RCLASS_VECM, &regno) && regno == 0)
