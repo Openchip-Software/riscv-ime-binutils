@@ -1,10 +1,4 @@
 target:
-	vmmacc.vv v16, v0, v8
-	vwmmacc.vv v16, v0, v8
-	vqwmmacc.vv v16, v0, v8
-	vfmmacc.vv v16, v0, v8
-	vfwmmacc.vv v16, v0, v8
-	vfqwmmacc.vv v16, v0, v8
 	vmtl.v v1, (x4), x5
 	vmtl.v v2, 0(x6), x7
 	vmttl.v v3, (x8), x9

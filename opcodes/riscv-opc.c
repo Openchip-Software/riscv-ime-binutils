@@ -2229,17 +2229,19 @@ const struct riscv_opcode riscv_opcodes[] =
 {"vfwmaccbf16.vf",  0, INSN_CLASS_ZVFBFWMA, "Vd,S,VtVm",  MATCH_VFWMACCBF16_VF, MASK_VFWMACCBF16_VF, match_opcode, 0},
 {"vfwmaccbf16.vv",  0, INSN_CLASS_ZVFBFWMA, "Vd,Vs,VtVm", MATCH_VFWMACCBF16_VV, MASK_VFWMACCBF16_VV, match_opcode, 0},
 
-/* Zvmma (IME) instructions.  */
-{"vfmmacc.vv",   0, INSN_CLASS_ZVMMA, "Vd,Vs,VtVm", MATCH_VFMMACC_VV, MASK_VFMMACC_VV, match_opcode, 0},
-{"vfwmmacc.vv",  0, INSN_CLASS_ZVMMA, "Vd,Vs,VtVm", MATCH_VFWMMACC_VV, MASK_VFWMMACC_VV, match_opcode, 0},
-{"vfqwmmacc.vv", 0, INSN_CLASS_ZVMMA, "Vd,Vs,VtVm", MATCH_VFQWMMACC_VV, MASK_VFQWMMACC_VV, match_opcode, 0},
-{"vmmacc.vv",    0, INSN_CLASS_ZVMMA, "Vd,Vs,VtVm", MATCH_VMMACC_VV, MASK_VMMACC_VV, match_opcode, 0},
-{"vwmmacc.vv",   0, INSN_CLASS_ZVMMA, "Vd,Vs,VtVm", MATCH_VWMMACC_VV, MASK_VWMMACC_VV, match_opcode, 0},
-{"vqwmmacc.vv",  0, INSN_CLASS_ZVMMA, "Vd,Vs,VtVm", MATCH_VQWMMACC_VV, MASK_VQWMMACC_VV, match_opcode, 0},
-{"vmtl.v",       0, INSN_CLASS_ZVMMA, "Vd,0(s),tVLVm", MATCH_VMTL_V, MASK_VMTL_V, match_opcode, INSN_DREF},
-{"vmttl.v",      0, INSN_CLASS_ZVMMA, "Vd,0(s),tVLVm", MATCH_VMTTL_V, MASK_VMTTL_V, match_opcode, INSN_DREF},
-{"vmts.v",       0, INSN_CLASS_ZVMMA, "Vd,0(s),tVLVm", MATCH_VMTS_V, MASK_VMTS_V, match_opcode, INSN_DREF},
-{"vmtts.v",      0, INSN_CLASS_ZVMMA, "Vd,0(s),tVLVm", MATCH_VMTTS_V, MASK_VMTTS_V, match_opcode, INSN_DREF},
+/* Zvvfmm (IME) instructions.  */
+{"vfmmacc.vv",   0, INSN_CLASS_ZVVFMM, "Vd,Vs,VtVm", MATCH_VFMMACC_VV, MASK_VFMMACC_VV, match_opcode, 0},
+{"vfwmmacc.vv",  0, INSN_CLASS_ZVVFMM, "Vd,Vs,VtVm", MATCH_VFWMMACC_VV, MASK_VFWMMACC_VV, match_opcode, 0},
+{"vfqwmmacc.vv", 0, INSN_CLASS_ZVVFMM, "Vd,Vs,VtVm", MATCH_VFQWMMACC_VV, MASK_VFQWMMACC_VV, match_opcode, 0},
+/* Zvvmm (IME) instructions.  */
+{"vmmacc.vv",    0, INSN_CLASS_ZVVMM, "Vd,Vs,VtVm", MATCH_VMMACC_VV, MASK_VMMACC_VV, match_opcode, 0},
+{"vwmmacc.vv",   0, INSN_CLASS_ZVVMM, "Vd,Vs,VtVm", MATCH_VWMMACC_VV, MASK_VWMMACC_VV, match_opcode, 0},
+{"vqwmmacc.vv",  0, INSN_CLASS_ZVVMM, "Vd,Vs,VtVm", MATCH_VQWMMACC_VV, MASK_VQWMMACC_VV, match_opcode, 0},
+/* Zvvmtls (IME) instructions.  */
+{"vmtl.v",       0, INSN_CLASS_ZVVMTLS, "Vd,0(s),tVLVm", MATCH_VMTL_V, MASK_VMTL_V, match_opcode, INSN_DREF},
+{"vmttl.v",      0, INSN_CLASS_ZVVMTLS, "Vd,0(s),tVLVm", MATCH_VMTTL_V, MASK_VMTTL_V, match_opcode, INSN_DREF},
+{"vmts.v",       0, INSN_CLASS_ZVVMTLS, "Vd,0(s),tVLVm", MATCH_VMTS_V, MASK_VMTS_V, match_opcode, INSN_DREF},
+{"vmtts.v",      0, INSN_CLASS_ZVVMTLS, "Vd,0(s),tVLVm", MATCH_VMTTS_V, MASK_VMTTS_V, match_opcode, INSN_DREF},
 
 /* Zvbb/Zvkb instructions.  */
 {"vandn.vv",   0, INSN_CLASS_ZVKB, "Vd,Vt,VsVm", MATCH_VANDN_VV, MASK_VANDN_VV, match_opcode, 0},

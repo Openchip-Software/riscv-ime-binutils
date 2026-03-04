@@ -1531,7 +1531,9 @@ static const struct riscv_supported_ext riscv_supported_std_z_ext[] =
   {"zvksg",		ISA_SPEC_CLASS_DRAFT,		1, 0, 0 },
   {"zvksc",		ISA_SPEC_CLASS_DRAFT,		1, 0, 0 },
   {"zvkt",		ISA_SPEC_CLASS_DRAFT,		1, 0, 0 },
-  {"zvmma",     	ISA_SPEC_CLASS_DRAFT,		1, 0, 0 },
+  {"zvvmm",     	ISA_SPEC_CLASS_DRAFT,		1, 0, 0 },
+  {"zvvfmm",     	ISA_SPEC_CLASS_DRAFT,		1, 0, 0 },
+  {"zvvmtls",     	ISA_SPEC_CLASS_DRAFT,		1, 0, 0 },
   {"zvl32b",		ISA_SPEC_CLASS_DRAFT,		1, 0, 0 },
   {"zvl64b",		ISA_SPEC_CLASS_DRAFT,		1, 0, 0 },
   {"zvl128b",		ISA_SPEC_CLASS_DRAFT,		1, 0, 0 },
@@ -2969,8 +2971,12 @@ riscv_multi_subset_supports (riscv_parse_subset_t *rps,
       return riscv_subset_supports (rps, "zvksed");
     case INSN_CLASS_ZVKSH:
       return riscv_subset_supports (rps, "zvksh");
-    case INSN_CLASS_ZVMMA:
-      return riscv_subset_supports (rps, "zvmma");
+    case INSN_CLASS_ZVVMM:
+      return riscv_subset_supports (rps, "zvvmm");
+    case INSN_CLASS_ZVVFMM:
+      return riscv_subset_supports (rps, "zvvfmm");
+    case INSN_CLASS_ZVVMTLS:
+      return riscv_subset_supports (rps, "zvvmtls");
     case INSN_CLASS_ZCB:
       return riscv_subset_supports (rps, "zcb");
     case INSN_CLASS_ZCB_AND_ZBB:
@@ -3286,8 +3292,12 @@ riscv_multi_subset_supports_ext (riscv_parse_subset_t *rps,
       return _("zvksed");
     case INSN_CLASS_ZVKSH:
       return _("zvksh");
-    case INSN_CLASS_ZVMMA:
-      return _("zvmma");
+    case INSN_CLASS_ZVVMM:
+      return _("zvvmm");
+    case INSN_CLASS_ZVVFMM:
+      return _("zvvfmm");
+    case INSN_CLASS_ZVVMTLS:
+      return _("zvvmtls");
     case INSN_CLASS_ZCB:
       return "zcb";
     case INSN_CLASS_ZCB_AND_ZBA:
