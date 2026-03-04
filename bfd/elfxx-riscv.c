@@ -1305,6 +1305,7 @@ static const struct riscv_implicit_subset riscv_implicit_subsets[] =
   {"zvksg", "+zvks,+zvkg", check_implicit_always},
   {"zvksc", "+zvks,+zvbc", check_implicit_always},
   {"zvks", "+zvksed,+zvksh,+zvkb,+zvkt", check_implicit_always},
+  {"zvmma", "+zvvmm,+zvvfmm,+zvvmtls", check_implicit_always},
 
   {"sdtrig", "+zicsr", check_implicit_always},
 
@@ -1531,6 +1532,7 @@ static const struct riscv_supported_ext riscv_supported_std_z_ext[] =
   {"zvksg",		ISA_SPEC_CLASS_DRAFT,		1, 0, 0 },
   {"zvksc",		ISA_SPEC_CLASS_DRAFT,		1, 0, 0 },
   {"zvkt",		ISA_SPEC_CLASS_DRAFT,		1, 0, 0 },
+  {"zvmma",     	ISA_SPEC_CLASS_DRAFT,		1, 0, 0 },
   {"zvvmm",     	ISA_SPEC_CLASS_DRAFT,		1, 0, 0 },
   {"zvvfmm",     	ISA_SPEC_CLASS_DRAFT,		1, 0, 0 },
   {"zvvmtls",     	ISA_SPEC_CLASS_DRAFT,		1, 0, 0 },
