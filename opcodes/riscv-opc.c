@@ -2233,12 +2233,15 @@ const struct riscv_opcode riscv_opcodes[] =
 {"vfmmacc.vv",    0, INSN_CLASS_ZVVFMM, "Vd,Vs,VtVS", MATCH_VFMMACC_VV, MASK_VFMMACC_VV, match_opcode, 0},
 {"vfwmmacc.vv",   0, INSN_CLASS_ZVVFMM, "Vd,Vs,VtVS", MATCH_VFWMMACC_VV, MASK_VFWMMACC_VV, match_opcode, 0},
 {"vfqwmmacc.vv",  0, INSN_CLASS_ZVVFMM, "Vd,Vs,VtVS", MATCH_VFQWMMACC_VV, MASK_VFQWMMACC_VV, match_opcode, 0},
+{"vf8wmmacc.vv",  0, INSN_CLASS_ZVVFMM, "Vd,Vs,VtVS", MATCH_VF8WMMACC_VV, MASK_VF8WMMACC_VV, match_opcode, 0},
 {"vfwimmacc.vv",  0, INSN_CLASS_ZVVFMM, "Vd,Vs,Vt",   MATCH_VFWIMMACC_VV, MASK_VFWIMMACC_VV, match_opcode, 0},
 {"vfqwimmacc.vv", 0, INSN_CLASS_ZVVFMM, "Vd,Vs,Vt",   MATCH_VFQWIMMACC_VV, MASK_VFQWIMMACC_VV, match_opcode, 0},
+{"vf8wimmacc.vv", 0, INSN_CLASS_ZVVFMM, "Vd,Vs,Vt",   MATCH_VF8WIMMACC_VV, MASK_VF8WIMMACC_VV, match_opcode, 0},
 /* Zvvmm (IME) instructions.  */
 {"vmmacc.vv",     0, INSN_CLASS_ZVVMM, "Vd,Vs,Vt", MATCH_VMMACC_VV, MASK_VMMACC_VV, match_opcode, 0},
 {"vwmmacc.vv",    0, INSN_CLASS_ZVVMM, "Vd,Vs,Vt", MATCH_VWMMACC_VV, MASK_VWMMACC_VV, match_opcode, 0},
 {"vqwmmacc.vv",   0, INSN_CLASS_ZVVMM, "Vd,Vs,Vt", MATCH_VQWMMACC_VV, MASK_VQWMMACC_VV, match_opcode, 0},
+{"v8wmmacc.vv",   0, INSN_CLASS_ZVVMM, "Vd,Vs,Vt", MATCH_V8WMMACC_VV, MASK_V8WMMACC_VV, match_opcode, 0},
 /* Zvvmtls (IME) instructions.  */
 {"vmtl.v",       0, INSN_CLASS_ZVVMTLS, "Vd,0(s),tVLVm", MATCH_VMTL_V, MASK_VMTL_V, match_opcode, INSN_DREF},
 {"vmts.v",       0, INSN_CLASS_ZVVMTLS, "Vd,0(s),tVLVm", MATCH_VMTS_V, MASK_VMTS_V, match_opcode, INSN_DREF},

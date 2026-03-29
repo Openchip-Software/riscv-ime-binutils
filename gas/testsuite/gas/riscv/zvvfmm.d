@@ -14,5 +14,8 @@ Disassembly of section .text:
 [	 ]+c:[	 ]+54801857[	 ]+vfwmmacc.vv[	 ]+v16,v0,v8,v0\.scale
 [	 ]+10:[	 ]+5a801857[	 ]+vfqwmmacc.vv[	 ]+v16,v0,v8
 [	 ]+14:[	 ]+58801857[	 ]+vfqwmmacc.vv[	 ]+v16,v0,v8,v0\.scale
-[	 ]+18:[	 ]+e4800857[	 ]+vfwimmacc.vv[	 ]+v16,v0,v8
-[	 ]+1c:[	 ]+e8800857[	 ]+vfqwimmacc.vv[	 ]+v16,v0,v8
+[	 ]+18:[	 ]+5e801857[	 ]+vf8wmmacc.vv[	 ]+v16,v0,v8
+[	 ]+1c:[	 ]+5c801857[	 ]+vf8wmmacc.vv[	 ]+v16,v0,v8,v0\.scale
+[	 ]+20:[	 ]+e4800857[	 ]+vfwimmacc.vv[	 ]+v16,v0,v8
+[	 ]+24:[	 ]+e8800857[	 ]+vfqwimmacc.vv[	 ]+v16,v0,v8
+[	 ]+28:[	 ]+ec800857[	 ]+vf8wimmacc.vv[	 ]+v16,v0,v8
