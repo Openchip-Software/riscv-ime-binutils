@@ -1562,6 +1562,7 @@ validate_riscv_insn (const struct riscv_opcode *opc, int length)
 	    case 'k': USE_BITS (OP_MASK_VIMM, OP_SH_VIMM); break;
 	    case 'l': used_bits |= ENCODE_RVV_VI_UIMM6 (-1U); break;
 	    case 'm': USE_BITS (OP_MASK_VMASK, OP_SH_VMASK); break;
+	    case 'S': USE_BITS (OP_MASK_VMASK, OP_SH_VMASK); break; /* v0.scale */
 	    case 'M': break; /* Macro operand, must be a mask register.  */
 	    case 'L': USE_BITS (OP_MASK_VLAMBDA, OP_SH_VLAMBDA); break;
 	    case 'T': break; /* Macro operand, must be a vector register.  */
@@ -3440,6 +3441,22 @@ riscv_ip (char *str, struct riscv_cl_insn *ip, expressionS *imm_expr,
 			   && reg_lookup (&asarg, RCLASS_VECM, &regno)
 			   && regno == 0)
 		    {
+		      INSERT_OPERAND (VMASK, *ip, 0);
+		      continue;
+		    }
+		  break;
+
+		case 'S': /* optional v0.scale (IME microscaling) */
+		  if (*asarg == '\0')
+		    {
+		      INSERT_OPERAND (VMASK, *ip, 1);
+		      continue;
+		    }
+		  else if (*asarg == ','
+			   && startswith (asarg + 1, "v0.scale")
+			   && (asarg[9] == '\0' || asarg[9] == ','))
+		    {
+		      asarg += 9; /* consume ",v0.scale" */
 		      INSERT_OPERAND (VMASK, *ip, 0);
 		      continue;
 		    }

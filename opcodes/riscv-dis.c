@@ -494,6 +494,13 @@ print_insn_args (const char *oparg, insn_t l, bfd_vma pc, disassemble_info *info
 			 riscv_vecm_names_numeric[0]);
 		}
 	      break;
+	    case 'S': /* optional v0.scale (IME microscaling) */
+	      if (!EXTRACT_OPERAND (VMASK, l))
+		{
+		  print (info->stream, dis_style_text, ",");
+		  print (info->stream, dis_style_register, "v0.scale");
+		}
+	      break;
 	    case 'L':
 	      {
 		unsigned int vlambda = EXTRACT_OPERAND (VLAMBDA, l);
