@@ -2239,9 +2239,10 @@ const struct riscv_opcode riscv_opcodes[] =
 {"vqwmmacc.vv",  0, INSN_CLASS_ZVVMM, "Vd,Vs,VtVm", MATCH_VQWMMACC_VV, MASK_VQWMMACC_VV, match_opcode, 0},
 /* Zvvmtls (IME) instructions.  */
 {"vmtl.v",       0, INSN_CLASS_ZVVMTLS, "Vd,0(s),tVLVm", MATCH_VMTL_V, MASK_VMTL_V, match_opcode, INSN_DREF},
-{"vmttl.v",      0, INSN_CLASS_ZVVMTLS, "Vd,0(s),tVLVm", MATCH_VMTTL_V, MASK_VMTTL_V, match_opcode, INSN_DREF},
 {"vmts.v",       0, INSN_CLASS_ZVVMTLS, "Vd,0(s),tVLVm", MATCH_VMTS_V, MASK_VMTS_V, match_opcode, INSN_DREF},
-{"vmtts.v",      0, INSN_CLASS_ZVVMTLS, "Vd,0(s),tVLVm", MATCH_VMTTS_V, MASK_VMTTS_V, match_opcode, INSN_DREF},
+/* Zvvmttls (IME) instructions.  */
+{"vmttl.v",      0, INSN_CLASS_ZVVMTTLS, "Vd,0(s),tVLVm", MATCH_VMTTL_V, MASK_VMTTL_V, match_opcode, INSN_DREF},
+{"vmtts.v",      0, INSN_CLASS_ZVVMTTLS, "Vd,0(s),tVLVm", MATCH_VMTTS_V, MASK_VMTTS_V, match_opcode, INSN_DREF},
 
 /* Zvbb/Zvkb instructions.  */
 {"vandn.vv",   0, INSN_CLASS_ZVKB, "Vd,Vt,VsVm", MATCH_VANDN_VV, MASK_VANDN_VV, match_opcode, 0},

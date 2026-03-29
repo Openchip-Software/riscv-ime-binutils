@@ -92,6 +92,7 @@ All available -march extensions for RISC-V:
 	zvvfmm                                  1.0
 	zvvmm                                   1.0
 	zvvmtls                                 1.0
+	zvvmttls                                1.0
 	zvl32b                                  1.0
 	zvl64b                                  1.0
 	zvl128b                                 1.0

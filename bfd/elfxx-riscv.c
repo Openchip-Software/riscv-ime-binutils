@@ -1305,7 +1305,7 @@ static const struct riscv_implicit_subset riscv_implicit_subsets[] =
   {"zvksg", "+zvks,+zvkg", check_implicit_always},
   {"zvksc", "+zvks,+zvbc", check_implicit_always},
   {"zvks", "+zvksed,+zvksh,+zvkb,+zvkt", check_implicit_always},
-  {"zvmma", "+zvvmm,+zvvfmm,+zvvmtls", check_implicit_always},
+  {"zvmma", "+zvvmm,+zvvfmm,+zvvmtls,+zvvmttls", check_implicit_always},
 
   {"sdtrig", "+zicsr", check_implicit_always},
 
@@ -1536,6 +1536,7 @@ static const struct riscv_supported_ext riscv_supported_std_z_ext[] =
   {"zvvmm",     	ISA_SPEC_CLASS_DRAFT,		1, 0, 0 },
   {"zvvfmm",     	ISA_SPEC_CLASS_DRAFT,		1, 0, 0 },
   {"zvvmtls",     	ISA_SPEC_CLASS_DRAFT,		1, 0, 0 },
+  {"zvvmttls",     	ISA_SPEC_CLASS_DRAFT,		1, 0, 0 },
   {"zvl32b",		ISA_SPEC_CLASS_DRAFT,		1, 0, 0 },
   {"zvl64b",		ISA_SPEC_CLASS_DRAFT,		1, 0, 0 },
   {"zvl128b",		ISA_SPEC_CLASS_DRAFT,		1, 0, 0 },
@@ -2979,6 +2980,8 @@ riscv_multi_subset_supports (riscv_parse_subset_t *rps,
       return riscv_subset_supports (rps, "zvvfmm");
     case INSN_CLASS_ZVVMTLS:
       return riscv_subset_supports (rps, "zvvmtls");
+    case INSN_CLASS_ZVVMTTLS:
+      return riscv_subset_supports (rps, "zvvmttls");
     case INSN_CLASS_ZCB:
       return riscv_subset_supports (rps, "zcb");
     case INSN_CLASS_ZCB_AND_ZBB:
@@ -3300,6 +3303,8 @@ riscv_multi_subset_supports_ext (riscv_parse_subset_t *rps,
       return _("zvvfmm");
     case INSN_CLASS_ZVVMTLS:
       return _("zvvmtls");
+    case INSN_CLASS_ZVVMTTLS:
+      return _("zvvmttls");
     case INSN_CLASS_ZCB:
       return "zcb";
     case INSN_CLASS_ZCB_AND_ZBA:
